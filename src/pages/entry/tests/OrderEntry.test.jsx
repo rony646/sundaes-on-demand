@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '../../../test-utils/testing-library-utils.js';
 import OrderEntry from '../OrderEntry';
 import { rest } from 'msw';
 import { server } from '../../../mocks/server';
@@ -18,7 +18,7 @@ test('handles erros for scoops and toppings routes', async() => {
     await waitFor(async () => { 
         const alerts = await screen.findAllByRole('alert')
         expect(alerts).toHaveLength(2);
-    })
+    }, { timeout: 5000 })
 
     
 });

@@ -1,9 +1,10 @@
-import { findAllByRole, render, screen } from '@testing-library/react';
+import { render, screen } from '../../../test-utils/testing-library-utils.js';
+import { OrderDetailsProvider } from '../../../contexts/OrderDetails';
 
 import Options from '../Options';
 
-test('It displays image for each scoop option from server', async () => {
-    render(<Options optionType="scoops"/>);
+test('It displays image for each scoop optiosn from server', async () => {
+    render(<Options optionType="scoops"/>, { wrapper: OrderDetailsProvider });
 
     // find images
     const scoopImages = await screen.findAllByRole('img', { name: /scoop$/i});
